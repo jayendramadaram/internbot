@@ -49,31 +49,30 @@ async def on_message(message):
               soup = BeautifulSoup(html , "lxml")
               tag = soup.find_all("span" , {"id": "total_pages"})
               loop = int(tag[0].text)
+                
+                
+                ### THIS PART IS UNDER CONSTRUCTION I AM MAKING IN MORE EFFICIENT SOME PART OF CODE IS DELETED
 
-              try:
-                for i in range(1 , loop+1):
-                    url = "https://internshala.com/internships/keywords-{}".format(i)
-                    # print(url)
-                    html = requests.get(url).text
-                    soup = BeautifulSoup(html , "lxml")
+#               try:
+#                 for i in range(1 , loop+1):
+#                     url = "https://internshala.com/internships/keywords-{}".format(i)
+#                     # print(url)
+#                     html = requests.get(url).text
 
-                    tag = soup.find_all("div" , class_ = "individual_internship")
+#                     tag = soup.find_all("div" , class_ = "individual_internship")
 
-                    for i in tag:
-                        cont = i.a
+#                     for i in tag:
+#                         
+#                         file.write("internship offer on  ==>{}\n ".format(cont.text))
+#                         file.write("link of intership : {}\n".format("https://internshala.com{}".format(cont.get('href'))))
                         
-                        conten = i.find_all("div" , class_="item_body")
-                        # print(conte)
-                        file.write("internship offer on  ==>{}\n ".format(cont.text))
-                        file.write("link of intership : {}\n".format("https://internshala.com{}".format(cont.get('href'))))
-                        
-                        file.write("start of intern : {}\n".format(conten[0].text.replace(" ","").strip()))
-                        file.write("duration of intern : {}\n" .format(conten[1].text.strip()))
-                        file.write("salery of intern : {}\n".format(conten[2].text.strip()))
-                        file.write("apply to intern by : {}\n".format(conten[3].text.strip()))
-                        file.write("\n")
-                        file.write("\n")
-                        file.write("\n")
+#                         file.write("start of intern : {}\n".format(conten[0].text.replace(" ","").strip()))
+#                         file.write("duration of intern : {}\n" .format(conten[1].text.strip()))
+#                         file.write("salery of intern : {}\n".format(conten[2].text.strip()))
+#                         file.write("apply to intern by : {}\n".format(conten[3].text.strip()))
+#                         file.write("\n")
+#                         file.write("\n")
+#                         file.write("\n")
               except:
                 await message.reply('your entered quiery might be wrong please try again or contact JAYENDRA')
 
